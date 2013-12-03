@@ -1,0 +1,17 @@
+<h1>Available Projects</h1>
+
+  <ul id="projects">
+    <% @projects.each do |project| %>
+      <li>
+        <strong><%= project.title %></strong><br />
+        <%= project.description %>. <br /> 
+        <strong>Goal: </strong><%= project.goal %><br />
+        <strong>Start date: </strong><%= project.start_date %><br />
+        <strong>End date: </strong><%= project.end_date %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to ">> Create New Project", new_project_path, class: "new_project" %>
+  
+
