@@ -4,6 +4,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project = Project.new(project_params)
+
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def show
@@ -17,9 +24,10 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def create
-  end
+  
 
-  def update
+  private
+  def project_params
+    params.require(:project).permit(:title, :description, :goal, :start_date, :end_date)
   end
 end
