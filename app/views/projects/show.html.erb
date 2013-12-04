@@ -4,6 +4,8 @@
 <p>Goal Amount: $<%= @project.goal %></p>
 <p>Start Date: <%= @project.start_date %></p>
 <p>End Date: <%= @project.end_date %></p>
+<p>Total amount funded to date: $<%= @project.pledges.sum(:amount) %> </p>
+<p>Funding Status: <%= ((@project.pledges.sum(:amount)/@project.goal).to_f)*100 %> %</p>
 <%= link_to ">> Back to Projects List", projects_path %><br />
 <%= link_to ">> Delete Project", @project, method: :delete, data:{ confirm: "Are you sure you want to delete this project?"} %>
 

@@ -8,7 +8,8 @@
         <strong>Goal: </strong><%= project.goal %><br />
         <strong>Start date: </strong><%= project.start_date %><br />
         <strong>End date: </strong><%= project.end_date %><br/>
-          <strong>Project by: <%= project.id %></strong>
+          <strong>Project id:</strong> <%= project.id %><br/>
+          <%= link_to "View Project", project_path(project) %>
 
       </li>
     <% end %>
