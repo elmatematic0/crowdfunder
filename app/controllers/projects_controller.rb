@@ -23,9 +23,13 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
 
-    redirect_to projects_url, :status => 301  
+    if @project.user_id == current_user.id
+      @project.destroy
+     redirect_to projects_url, :status => 301  
+   else
+     redirect_to projects_path
+   end
   end
 
   def index
