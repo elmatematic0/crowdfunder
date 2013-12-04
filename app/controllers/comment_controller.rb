@@ -1,5 +1,6 @@
 class CommentController < ApplicationController
-  before_filter :load_project	
+  before_filter :load_project
+  
 
   def show
   	@comment = Comment.find(params[:id])
