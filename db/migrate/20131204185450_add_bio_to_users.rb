@@ -1,5 +1,7 @@
 class AddBioToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :bio, :text
+  		change_table :users do |t|
+    	t.text :bio
+	end
   end
 end

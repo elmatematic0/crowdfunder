@@ -19,12 +19,15 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    if current_user
+      @comment = @project.comments.build
+    end
   end
 
   def destroy
     @project = Project.find(params[:id])
 
-    if @project.user_id == current_user.id && @project.pledges.sum(:amount) ==nil 
+    if @project.user_id == current_user.id && @project.pledges.sum(:amount) ==nil && @project.end_date > Date.today
       @project.destroy
      redirect_to projects_url, :status => 301  
    else
