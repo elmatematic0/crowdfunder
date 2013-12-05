@@ -12,14 +12,38 @@
 	<!-- <p>Comments for <%= @project.title %></p> -->
 	<% @project.comments.each do |c| %> <p>
 	
-	<% if c.user != nil %>
-	<em> by <%= c.user.username %></em>
-	<strong><%= c.remark %></strong>
-	Added on: <%= c.created_at %> <% end %>
+		<% if c.user != nil %>
+			<em> by <%= c.user.username %></em>
+			<strong><%= c.remark %></strong>
+			Added on: <%= c.created_at %> 
+		<% end %>
 
 	</p>
-	<% end %> 
-<% end %>
+<% end %> 
+
+<h4>New Comment</h4>
+<%= form_for([@project, @comment]) do |f| %> <% if @comment.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@comment.errors.count, "error") %> prohibited this review from being saved:</h2>
+		<ul>
+		<% @comment.errors.full_messages.each do |msg| %> <li><%= msg %></li>
+	
+	￼	<% end %>
+		</ul> 
+	</div>
+	<% end %>
+	<div class="field">
+	<%= f.label :comment %><br /> <%= f.text_area :remark %>
+	</div>
+	<div class="actions">
+	<%= f.submit %> </div>
+	<% end %>
+	<% else %>
+	<p>Please <%= link_to "log in", new_session_path %> to add a review.</p>
+	<% end %>
+
+
+
 
 
 

@@ -20,14 +20,16 @@
   <!-- Need to figure out date pickers for start_data and end_date Note as of: Dec 3 -->
   <div class="field">
     <%= f.label :start_date %><br />
-    <%= f.text_field :start_date %>
+    <%= f.date_select :start_date %>
   </div>
 
 
   <div class="field">
     <%= f.label :end_date %><br />
-    <%= f.text_field :end_date %>
+    <%= f.date_select :end_date %>
   </div>
+
+
 
    <div class="field">
       <%= f.submit %>

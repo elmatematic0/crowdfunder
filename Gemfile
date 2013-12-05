@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 # for authentication
 gem  'sorcery'
 
+# gem to parse date/time values received as user input(which would default as string) into date format one can store in a database
+gem 'chronic'
 
 group :development do
   gem "rails-erd"

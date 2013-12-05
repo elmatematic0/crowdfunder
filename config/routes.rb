@@ -5,12 +5,11 @@ Crowdfunder::Application.routes.draw do
     resources :users
     resources :sessions
 
-
-  get "comment/show"
-  get "comment/create"
-  get "comment/destroy"
-  # get "show/create"
-  # get "show/destroy"
+resources :comments
+  # get "comments/show"
+  # get "comments/create"
+  # get "comments/destroy"
+ 
   resources :projects do
     resources :comments, :except => [:index]
   end

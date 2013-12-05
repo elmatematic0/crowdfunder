@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204235714) do
+ActiveRecord::Schema.define(version: 20131205213241) do
 
   create_table "comments", force: true do |t|
     t.text     "remark"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20131204235714) do
     t.string   "title"
     t.text     "description"
     t.integer  "goal"
-    t.string   "start_date"
-    t.string   "end_date"
+    t.datetime "start_date",  limit: 255
+    t.datetime "end_date",    limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

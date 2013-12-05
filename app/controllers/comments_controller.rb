@@ -1,6 +1,6 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   before_filter :load_project
-
+  
 
   def show
   	@comment = Comment.find(params[:id])
@@ -11,11 +11,11 @@ class CommentController < ApplicationController
   	# @comment.user_id = user_id
 
     # instead of the above using the alternate sytax below
-    @comment = Commnet.new(
+    @comment = Comment.new(
       :remark => params[:comment][:remark],
-      :project_id => @project_id,
+      :project_id => @project.id,
       :user_id => current_user.id
-      )
+    )
     if @comment.save
       redirect_to projects_path, notice: "Your comment has been added"
     else
@@ -24,8 +24,8 @@ class CommentController < ApplicationController
   end
 
   def destroy
-  	@review = Comment.find(params[:id])
-  	@review.destroy
+  	@comment = Comment.find(params[:id])
+  	@comment.destroy
   end
 
   private
@@ -34,6 +34,6 @@ class CommentController < ApplicationController
 	end
 
 	def load_project
-		@product = Product.find(paramns[:project_id])
+		@project = Project.find(params[:project_id])
   end
 end
