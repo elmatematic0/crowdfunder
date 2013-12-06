@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   		redirect_to projects_path, :notice => "Signed up"
   	else
  		render :new
- 	end 			
+ 	  end 			
   end
+
+  def show
+    @user = User.find(params[:id])    
+  end
+
 
   private
   def user_params

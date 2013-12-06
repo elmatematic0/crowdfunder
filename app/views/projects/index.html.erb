@@ -3,17 +3,21 @@
   <ul id="projects">
     <% @projects.each do |project| %>
       <li>
-        <strong><%= project.title %></strong><br />
-        <%= project.description %>. <br /> 
+        <strong>Project Owner: <%= link_to "#{project.user.username}",user_path(project.user.id) %><%=  %></strong><br/>
+        <strong>Project Title: <%= project.title %></strong><br />
+         <strong>Project Overview: </strong><%= project.description %>. <br /> 
         <strong>Goal: </strong><%= project.goal %><br />
         <strong>Start date: </strong><%= project.start_date %><br />
         <strong>End date: </strong><%= project.end_date %><br/>
           <strong>Project id:</strong> <%= project.id %><br/>
           <%= link_to "View Project", project_path(project) %>
-
-      </li>
+      </li><br>
     <% end %>
   </ul>
+
+
+  <!-- for req. #7 we should use javascript to display pledge amount input field if user click <Click to back this project> button -->
+  <!-- similar approach may be the way to go for several requirements -->
 
   <%= link_to ">> Create New Project", new_project_path, class: "new_project" %>
   

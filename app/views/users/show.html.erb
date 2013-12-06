@@ -1,0 +1,22 @@
+<h1>Hello : <em><%= @user.username %></em> </h1>
+
+<p>About : <%= @user.bio %></p>
+<h2>Projects Created : </h2>
+
+<% @user.projects.each do |project| %>
+      <li>
+       <!--  <strong>Project Owner: <%= link_to "#{project.user.username}",user_path(project.user.id) %><%=  %></strong><br/> -->
+        <strong>Project Title: </strong><%= project.title %><br />
+         <strong>Project Overview: </strong><%= project.description %>. <br /> 
+        <strong>Goal: </strong><%= project.goal %><br />
+        <strong>Start date: </strong><%= project.start_date %><br />
+        <strong>End date: </strong><%= project.end_date %><br/>
+		<strong>Total amount funded to date: </strong>$ <%= project.pledges.sum(:amount) %> <br/>
+		<strong>Funding Status: </strong><%= ((project.pledges.sum(:amount)/project.goal).to_f)*100 %> %</br>
+         <strong>Project id:</strong> <%= project.id %><br/>
+         <%= link_to "View Project", project_path(project) %>
+      </li><br>
+    <% end %>
+  </ul>
+
+  <%= link_to ">> Back to Projects List", projects_path %><br />
