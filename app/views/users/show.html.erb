@@ -2,20 +2,50 @@
 
 <p>About : <%= @user.bio %></p>
 <h2>Projects Created : </h2>
+<% if @user.projects.size >0 %>
+	<% @user.projects.each do |project| %>
+	      <li>
+	        <strong>Project Title: </strong><%= project.title %><br />
+	         <strong>Project Overview: </strong><%= project.description %>. <br /> 
+	        <strong>Goal: </strong><%= project.goal %><br />
+	        <strong>Start date: </strong><%= project.start_date %><br />
+	        <strong>End date: </strong><%= project.end_date %><br/>
+			<strong>Total amount funded to date: </strong>$ <%= project.pledges.sum(:amount) %> <br/>
+			<strong>Funding Status: </strong><%= ((project.pledges.sum(:amount)/project.goal).to_f)*100 %> %</br>
+	         <strong>Project id:</strong> <%= project.id %><br/>
+	         <%= link_to "View Project", project_path(project) %>
+	      </li><br>
+	    <% end %>
+<% else %>
+	<h3>You have not created any projects - Do something ---add a project--- make the world a better place</h3>
+<% end %>
 
-<% @user.projects.each do |project| %>
-      <li>
-        <strong>Project Title: </strong><%= project.title %><br />
-         <strong>Project Overview: </strong><%= project.description %>. <br /> 
-        <strong>Goal: </strong><%= project.goal %><br />
-        <strong>Start date: </strong><%= project.start_date %><br />
-        <strong>End date: </strong><%= project.end_date %><br/>
-		<strong>Total amount funded to date: </strong>$ <%= project.pledges.sum(:amount) %> <br/>
-		<strong>Funding Status: </strong><%= ((project.pledges.sum(:amount)/project.goal).to_f)*100 %> %</br>
-         <strong>Project id:</strong> <%= project.id %><br/>
-         <%= link_to "View Project", project_path(project) %>
-      </li><br>
-    <% end %>
-  </ul>
+<h2>Projects Backed : </h2>
+<% if @user.pledges.size >0 %>
+	<% @user.projects.each do |project| %>
+	      <li>
+	        <strong>Project Title: </strong><%= project.title %><br />
+	         <strong>Project Overview: </strong><%= project.description %>. <br /> 
+	        <strong>Goal: </strong><%= project.goal %><br />
+	        <strong>Start date: </strong><%= project.start_date %><br />
+	        <strong>End date: </strong><%= project.end_date %><br/>
+			<strong>Total amount funded to date: </strong>$ <%= project.pledges.sum(:amount) %> <br/>
+			<strong>Funding Status: </strong><%= ((project.pledges.sum(:amount)/project.goal).to_f)*100 %> %</br>
+	         <strong>Project id:</strong> <%= project.id %><br/>
+	         <%= link_to "View Project", project_path(project) %>
+	      </li><br>
+	<% end %>
+<% else %>
+	<em><h4>You have not backed any projects - Do something ---spend some money --back a project--- make the world a better place</h4></em>
+<% end %>
+ 
+
+
+ 
+
+
+
+
+
 
   <%= link_to ">> Back to Projects List", projects_path %><br />
