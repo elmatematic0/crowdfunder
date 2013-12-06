@@ -1,0 +1,7 @@
+<h3>Greetings <%= @user.username %>,</h3>
+
+<p>The project you supported and backed has not been fully funded and has failed to meet its funding goal. The project has received a total sum of $<%= @project.pledges.sum(:amount)%>, failing short of the funding goal of amount $ <%= @project.goal%>.
+
+Thanks for your interest. Your contribution might be refunded ;).</p>
+
+

@@ -1,0 +1,11 @@
+<h3>Greetings <%= @user.username %>,</h3>
+
+<p>The project you supported and backed has been fully funded. The project has received a total sum of $ <%= @project.pledges.sum(:amount)%>. 
+
+Good Luck!</p>
+
+<%= link_to "View project details", project_url(@project) %>
+
+
+
+
