@@ -6,12 +6,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-
-
-
     if @project.save
       redirect_to project_path(@project)
     else
@@ -23,6 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if current_user
       @comment = @project.comments.build
+      @pledge = @project.pledges.build
     end
   end
 

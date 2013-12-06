@@ -5,7 +5,6 @@
 
 <% @user.projects.each do |project| %>
       <li>
-       <!--  <strong>Project Owner: <%= link_to "#{project.user.username}",user_path(project.user.id) %><%=  %></strong><br/> -->
         <strong>Project Title: </strong><%= project.title %><br />
          <strong>Project Overview: </strong><%= project.description %>. <br /> 
         <strong>Goal: </strong><%= project.goal %><br />
